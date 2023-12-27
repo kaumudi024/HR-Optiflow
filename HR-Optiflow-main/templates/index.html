@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axis Bank</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="logo-container">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6V0sI6leJgBcqDtk1GMdzRLiPqfUfa-MMdA&usqp=CAU" alt="Axis Bank Logo" class="logo">
+            </div>
+            <nav class="nav">
+                <a href="/job">Job Description</a>
+                <a href="/cv_ranking">CV Ranking</a>
+                <div class="btn-pink">Register Now</div>
+            </nav>
+        </header>
+        <main class="main">
+            <section class="video-section">
+                <h1>Welcome to Axis Bank Interview</h1>
+                <div class="video-container">
+                    <div id="question-display" class="question-display"></div>
+                    <video id="video-preview" playsinline autoplay muted></video>
+                    <div class="record-buttons">
+                        <button id="start-recording" class="btn-record">Start Recording</button>
+                        <button id="stop-recording" class="btn-record" disabled>Stop Recording</button>
+                    </div>
+                </div>
+            </section>
+            <section class="cv-upload-section">
+                <h2>Upload Your CV</h2>
+                <form action="{{ url_for('upload_file') }}" method="POST" class="form" enctype="multipart/form-data">
+                    <label for="cv-name">Your Name</label>
+                    <input type="text" id="cv-name" name="candidate_name" required>
+                    <label for="cv-email">Your Email</label>
+                    <input type="email" id="cv-email" name="candidate_email" required>
+                    <label for="cv-position">Your Position</label>
+                    <input type="text" id="cv-position" name="candidate_position" required>
+                    <label for="cv-upload" class="upload-label">
+                        <span>Choose File</span>
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </label>
+                    <input type="file" id="cv-upload" name="cv" accept=".pdf, .doc, .docx">
+                    <input type="submit" value="Upload CV" class="btn">
+                </form>
+            </section>
+        </main>
+        <footer class="footer">
+            <p>&copy; 2023 Axis Bank. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
